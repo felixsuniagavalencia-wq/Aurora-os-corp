@@ -54,7 +54,7 @@ def detect(req: DetectReq):
     r.setex(cache_key, 600, json.dumps(data))  # 10 min cache
     return data
 
-   from health import router as health_router
+from health import router as health_router
 app.include_router(health_router, tags=["health"])
 @app.get("/")
 def root():
