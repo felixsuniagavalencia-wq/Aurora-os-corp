@@ -46,12 +46,12 @@ Text: {text}"""
 @app.post("/silent/detect", response_model=DetectRsp)
 def detect(req: DetectReq):
     cache_key = hashlib.sha256(f"{req.channel}:{req.text}".encode()).hexdigest()
-    if (cached := r.get(cache_key)):
-        return json.loads(cached)
+    # if (cached := r.get(cache_key)):
+      #  return json.loads(cached)
 
     data = detect_intent(req.text)
     data["opportunity_id"] = f"opp_{cache_key[:8]}"
-    r.setex(cache_key, 600, json.dumps(data))  # 10 min cache
+    # r.setex(cache_key, 600, json.dumps(data))  # 10 min cache
     return data
 
 from health import router as health_router
