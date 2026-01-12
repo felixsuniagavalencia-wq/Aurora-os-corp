@@ -2,6 +2,8 @@ import os, json, redis, time, hashlib
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import litellm
+litellm.set_verbose = True
+
 from dotenv import load_dotenv
 
 load_dotenv()
