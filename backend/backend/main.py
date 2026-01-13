@@ -7,6 +7,15 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
 import logging
 logging.basicConfig(level=logging.DEBUG)
 print("OPENAI_API_KEY=", os.getenv("OPENAI_API_KEY"))
+try:
+    response = litellm.completion(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": "test"}],
+        max_tokens=5
+    )
+except Exception as e:
+    print("LITELLM_ERROR=", str(e))
+    raise
 
 
 from dotenv import load_dotenv
