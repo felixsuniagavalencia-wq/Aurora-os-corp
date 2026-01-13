@@ -2,7 +2,9 @@ import os, json, redis, time, hashlib
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import litellm
-litellm.set_verbose = True
+import os
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
+
 
 from dotenv import load_dotenv
 
