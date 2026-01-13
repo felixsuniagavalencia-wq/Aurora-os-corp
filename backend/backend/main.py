@@ -4,6 +4,9 @@ from pydantic import BaseModel
 import litellm
 import os
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
+import logging
+logging.basicConfig(level=logging.DEBUG)
+print("OPENAI_API_KEY=", os.getenv("OPENAI_API_KEY"))
 
 
 from dotenv import load_dotenv
